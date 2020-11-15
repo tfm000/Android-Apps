@@ -19,9 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Keeping track of counter positions
     String[] counterPositions = {"empty","empty","empty","empty","empty","empty","empty","empty","empty"};
-
-    //ArrayList<String>[][] counterPositions = new ArrayList[2][2]; - 2d array list useful for learning
-
+    
     public boolean hasWon(String colour){
         //Checks if a player has won
         if(verticalWin(colour) || horizontalWin(colour)|| diagonialWin(colour)){
@@ -61,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void dropIn(View view){
-        //Log.i("Info","clicked");
-
         //checking if position already has a counter
 
         ImageView counter = (ImageView) view;
@@ -83,26 +79,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
             counter.animate().translationYBy(1500).rotation(3600).setDuration(1000);
-//            Log.i("counter Location" ,String.valueOf(Integer.parseInt(counter.getTag().toString()) -1)   );
-//            Log.i("Counter colour",counterPositions[Integer.parseInt(counter.getTag().toString()) -1]);
-
+          
             //Checking if there has been a win
             if(hasWon(turn)){
                 Toast.makeText(this,  turn+" player has won! Congratulations!", Toast.LENGTH_LONG).show();
-
-                //Button resetButton = (Button) findViewById(R.id.resetButton);
                 TextView winnerText = (TextView) findViewById(R.id.winnerText);
                 winnerText.setText(turn + " player has won!");
                 winnerText.setVisibility(View.VISIBLE);
-                //resetButton.setVisibility(View.VISIBLE);
             }else if(numEmptys == 0){
                 Toast.makeText(this,"Its a Tie!", Toast.LENGTH_LONG).show();
                 TextView winnerText = (TextView) findViewById(R.id.winnerText);
                 winnerText.setText("Its a draw!");
                 winnerText.setVisibility(View.VISIBLE);
             }
-
-
 
             // Updating turn
             if(turn =="red"){
